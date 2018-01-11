@@ -11,8 +11,8 @@ window.onload = function() {
     clearCanvas("white");
     // new Block();
 
+    ctx.fillStyle = "#FF0000";
     ctx.beginPath();
-    ctx.fillStyle = "rgb(255, 255, 255)";
     ctx.rect(100, 500, 100, 100);
     ctx.stroke();
 
