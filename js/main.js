@@ -1,7 +1,17 @@
 window.onload = function() {
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
-    // var objects = [];
+    var walls = [];
+    var cube = [];
+    var score = 0;
+    var end = false;
+    var distance = 0;
+    setInterval(guard, 15);
+    var interval = Math.ceil(Math.random() * 300) + 100;
+    console.log("Vygenerovane cislo:", interval, "")
+    setInterval(generateWall, interval);
+
+    loadObjects();
 
     function clearCanvas(color) {
         ctx.fillStyle = color;
@@ -9,14 +19,39 @@ window.onload = function() {
         canvas.style.border = "10px solid black";
     }
     clearCanvas("white");
-    // new Block();
 
-    ctx.fillStyle = "#FF0000";
-    ctx.beginPath();
-    ctx.rect(100, 500, 100, 100);
-    ctx.stroke();
+    function loadObjects() {
+        cube[0] = new Block(100, 500, 100, 100, "black", "background");
+        walls[1] = new Wall(400, 500, "orange", "black");
+        walls[2] = new Wall(600, 500, "orange", "black");
+    }
 
-    ctx.beginPath();
-    ctx.rect(300, 450, 60, 150);
-    ctx.stroke();
+    function generateWall() {
+        distance = Math.ceil(Math.random() * 300) + 150;
+    }
+
+    function guard() {
+        clearCanvas("white");
+        cube.forEach(function(obj) {
+                obj.paint(ctx);
+                obj.fall(ctx);
+            })
+            //cube[0].paint(ctx);
+            //cube[0].fall(ctx);
+        walls.forEach(function(obj) {
+            obj.paint(ctx);
+            obj.animate(ctx);
+        })
+
+    }
+
+    document.addEventListener('keypress', function(key) {
+        console.log(key.code);
+        switch (key.code) {
+            case "Space":
+                cube[0].jump(ctx);
+                break;
+        }
+    })
+
 };

@@ -1,18 +1,17 @@
-function Block(x, y, width, height, border, background) {
+function Wall(x, y, background = "blue", border = "black") {
     this.x = x;
     this.y = y;
-    this.width = width;
-    this.height = height;
+    this.width = 50;
+    this.height = 120;
     this.fillStyle = background;
     this.strokeStyle = border;
     this.lineWidth = 3;
     this.lineDash = [];
-    this.fallSpeed = 6;
-    this.jumpHeight = 230;
+    this.speed = 8;
 
     this.paint = function(ctx) {
-        console.log(this.y);
         ctx.fillStyle = this.fillStyle;
+        ctx.strokeStyle = this.strokeStyle;
         ctx.fillRect(this.x, this.y, this.width, this.height);
         ctx.beginPath();
         ctx.strokeStyle = this.strokeStyle;
@@ -22,16 +21,8 @@ function Block(x, y, width, height, border, background) {
         ctx.stroke();
     }
 
-    this.fall = function(ctx) {
-        if (this.y < 495) {
-            this.y = this.y + this.fallSpeed;
-        };
+    this.animate = function(ctx) {
+        this.x = this.x - this.speed;
+        this.speed += 0.1;
     }
-
-    this.jump = function(ctx) {
-        if (this.y > 495 && this.y <= 500) {
-            this.y = this.y - this.jumpHeight;
-        };
-    }
-
-};
+}
