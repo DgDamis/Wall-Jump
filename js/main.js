@@ -7,7 +7,7 @@ window.onload = function() {
     var end = false;
     var distance = 0;
     setInterval(guard, 15);
-    var interval = Math.ceil(Math.random() * 300) + 100;
+    var interval = Math.ceil(Math.random() * 300) + 400;
     console.log("Vygenerovane cislo:", interval, "")
     setInterval(generateWall, interval);
 
@@ -27,7 +27,9 @@ window.onload = function() {
     }
 
     function generateWall() {
-        distance = Math.ceil(Math.random() * 300) + 150;
+        distance = Math.ceil(Math.random() * 300) + 600;
+        walls[walls.length] = new Wall(distance, 500, "orange", "black");
+        console.log("Počet vygenerovaných zdí: ", walls.length - 1, "");
     }
 
     function guard() {
