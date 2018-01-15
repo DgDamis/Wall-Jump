@@ -7,9 +7,9 @@ window.onload = function() {
     var end = false;
     var distance = 0;
     setInterval(guard, 15);
-    var interval = Math.ceil(Math.random() * 300) + 400;
-    console.log("Vygenerovane cislo:", interval, "")
-    setInterval(generateWall, interval);
+    // var interval = Math.ceil(Math.random() * 800) + 400;
+    // console.log("Vygenerovane cislo:", interval, "")
+    setInterval(generateWall, 1500);
 
     loadObjects();
 
@@ -22,14 +22,16 @@ window.onload = function() {
 
     function loadObjects() {
         cube[0] = new Block(100, 500, 100, 100, "black", "background");
-        walls[1] = new Wall(400, 500, "orange", "black");
-        walls[2] = new Wall(600, 500, "orange", "black");
+        walls[0] = new Wall(900, 500, "orange", "black");
     }
 
     function generateWall() {
-        distance = Math.ceil(Math.random() * 300) + 600;
-        walls[walls.length] = new Wall(distance, 500, "orange", "black");
-        console.log("Počet vygenerovaných zdí: ", walls.length - 1, "");
+        distance = Math.ceil(Math.random() * 400 + 900);
+        if (distance > 300) {
+            walls[walls.length] = new Wall(distance, 500, "orange", "black");
+            console.log("Počet vygenerovaných zdí: ", walls.length - 1, "");
+        }
+
     }
 
     function guard() {

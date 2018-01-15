@@ -7,7 +7,7 @@ function Block(x, y, width, height, border, background) {
     this.strokeStyle = border;
     this.lineWidth = 3;
     this.lineDash = [];
-    this.fallSpeed = 6;
+    this.fallSpeed = 4;
     this.jumpHeight = 230;
 
     this.paint = function(ctx) {
@@ -29,7 +29,7 @@ function Block(x, y, width, height, border, background) {
     }
 
     this.jump = function(ctx) {
-        if (this.y > 495 && this.y <= 500) {
+        if (this.y > 490 && this.y <= 503) {
             this.y = this.y - this.jumpHeight;
         };
     }

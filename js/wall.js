@@ -23,6 +23,8 @@ function Wall(x, y, background = "blue", border = "black") {
 
     this.animate = function(ctx) {
         this.x = this.x - this.speed;
-        this.speed += 0.1;
+        this.speed += 0.001;
     }
+
+
 }
