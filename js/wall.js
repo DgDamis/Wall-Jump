@@ -2,7 +2,7 @@ function Wall(x, y, background = "blue", border = "black") {
     this.x = x;
     this.y = y;
     this.width = 50;
-    this.height = 120;
+    this.height = 300;
     this.fillStyle = background;
     this.strokeStyle = border;
     this.lineWidth = 3;

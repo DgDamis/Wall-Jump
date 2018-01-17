@@ -8,7 +8,7 @@ function Block(x, y, width, height, border, background) {
     this.lineWidth = 3;
     this.lineDash = [];
     this.fallSpeed = 4;
-    this.jumpHeight = 230;
+    this.jumpHeight = 250;
 
     this.paint = function(ctx) {
         console.log(this.y);
@@ -23,13 +23,13 @@ function Block(x, y, width, height, border, background) {
     }
 
     this.fall = function(ctx) {
-        if (this.y < 495) {
+        if (this.y < 530) {
             this.y = this.y + this.fallSpeed;
         };
     }
 
     this.jump = function(ctx) {
-        if (this.y > 490 && this.y <= 503) {
+        if (this.y > 523 && this.y <= 533) {
             this.y = this.y - this.jumpHeight;
         };
     }
